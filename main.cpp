@@ -28,12 +28,19 @@ void print_complex(gsl_complex z) {
 int main(void) {
 
   // Define coil
-  coil_params coil;
-  coil.r1 = 3.015e-3;
-  coil.r2 = 5.46e-3;
-  coil.z1 = 1.32e-3;
-  coil.z2 = 4.26e-3;
-  coil.windings = 900;
+  coil_params coil_c9;
+  coil_c9.r1 = 3.015e-3;
+  coil_c9.r2 = 5.46e-3;
+  coil_c9.z1 = 1.32e-3;
+  coil_c9.z2 = 4.26e-3;
+  coil_c9.windings = 900;
+
+  coil_params coil_c20;
+  coil_c20.r1 = 1.56e-3;
+  coil_c20.r2 = 1.83e-3;
+  coil_c20.z1 = 0.68e-3;
+  coil_c20.z2 = 4.73e-3;
+  coil_c20.windings = 121;
 
   // Define conducting space
   conductor_params conductor;
@@ -42,10 +49,19 @@ int main(void) {
 
   double frequencies[] = {1e3, 10e3, 100e3};
 
+  printf("Coil C9\n");
   for (int i = 0; i < 3; ++i) {
     printf("f = %g Hz", frequencies[i]);
     printf("  dz = ");
-    print_complex(halfspace_dz(&coil, &conductor, frequencies[i]));
+    print_complex(halfspace_dz(&coil_c9, &conductor, frequencies[i]));
+    printf("\n");
+  }
+
+  printf("Coil C20\n");
+  for (int i = 0; i < 3; ++i) {
+    printf("f = %g Hz", frequencies[i]);
+    printf("  dz = ");
+    print_complex(halfspace_dz(&coil_c20, &conductor, frequencies[i]));
     printf("\n");
   }
 
