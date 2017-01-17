@@ -9,5 +9,5 @@
 ## Compiling
 
 ```
-g++ -Wall -c hypergeometric_pfq.cpp half-space.cpp && g++ -o half-space.out half-space.o hypergeometric_pfq.o -larb -lflint -lgsl -lgslcblas -lm
+g++ -Wall -c lib/hypergeometric_pfq.cpp lib/struve.cpp lib/theo.cpp main.cpp && g++ -o eddy-sim.out hypergeometric_pfq.o struve.o theo.o main.o -larb -lflint -lgsl -lgslcblas -lm
 ```
